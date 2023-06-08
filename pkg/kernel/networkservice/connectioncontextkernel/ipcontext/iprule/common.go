@@ -211,7 +211,7 @@ func ruleAdd(ctx context.Context, handle *netlink.Handle, policy *networkservice
 		WithField("SrcPort", policy.SrcPort).
 		WithField("Table", tableID).
 		WithField("duration", time.Since(now)).
-		WithField("netlink", "RuleAdd").Debug("completed")
+		WithField("netlink", "RuleAdd").Info("completed")
 	return nil
 }
 
@@ -261,7 +261,7 @@ func routeAdd(ctx context.Context, handle *netlink.Handle, l netlink.Link, route
 		WithField("Flags", kernelRoute.Flags).
 		WithField("Table", tableID).
 		WithField("duration", time.Since(now)).
-		WithField("netlink", "RouteReplace").Debug("completed")
+		WithField("netlink", "RouteReplace").Info("completed")
 	return nil
 }
 
@@ -316,7 +316,7 @@ func delRule(ctx context.Context, handle *netlink.Handle, policy *networkservice
 		WithField("DstPort", policy.DstPort).
 		WithField("SrcPort", policy.SrcPort).
 		WithField("duration", time.Since(now)).
-		WithField("netlink", "RuleDel").Debug("completed")
+		WithField("netlink", "RuleDel").Info("completed")
 	return nil
 }
 
@@ -337,7 +337,7 @@ func flushTable(ctx context.Context, handle *netlink.Handle, tableID int) error 
 	}
 	log.FromContext(ctx).
 		WithField("tableID", tableID).
-		WithField("netlink", "flushTable").Debug("completed")
+		WithField("netlink", "flushTable").Info("completed")
 	return nil
 }
 
@@ -368,7 +368,7 @@ func getFreeTableID(ctx context.Context, handle *netlink.Handle) (int, error) {
 	}
 	log.FromContext(ctx).
 		WithField("tableID", tableID).
-		WithField("netlink", "getFreeTableID").Debug("completed")
+		WithField("netlink", "getFreeTableID").Info("completed")
 
 	return tableID, nil
 }

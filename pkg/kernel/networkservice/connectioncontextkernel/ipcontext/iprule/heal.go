@@ -70,7 +70,7 @@ func recoverTableIDs(ctx context.Context, conn *networkservice.Connection, table
 						WithField("IPProto", policy.Proto).
 						WithField("DstPort", policy.DstPort).
 						WithField("SrcPort", policy.SrcPort).
-						WithField("Table", podRules[i].Table).Debug("policy recovered")
+						WithField("Table", podRules[i].Table).Info("policy recovered")
 					err := delRule(ctx, netlinkHandle, policy, podRules[i].Table)
 					if err != nil {
 						return err
