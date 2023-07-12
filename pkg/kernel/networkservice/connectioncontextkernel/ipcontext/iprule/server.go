@@ -33,6 +33,11 @@ import (
 	"github.com/pkg/errors"
 )
 
+type policies struct {
+	ns        string
+	policymap map[int]*networkservice.PolicyRoute
+}
+
 type ipruleServer struct {
 	tables Map
 	// Protecting route and rule setting with this sync.Map

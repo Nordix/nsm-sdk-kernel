@@ -20,14 +20,10 @@ package iprule
 
 import (
 	"sync"
-
-	"github.com/networkservicemesh/api/pkg/api/networkservice"
 )
 
 //go:generate go-syncmap -output table_map.gen.go -type Map<string,policies>
 //go:generate go-syncmap -output netns_rtable_conn_map.gen.go -type NetnsRTableNextIDToConnMap<NetnsRTableNextID,string>
-
-type policies map[int]*networkservice.PolicyRoute
 
 // Map - sync.Map with key == string (connID) and value == policies
 type Map sync.Map
