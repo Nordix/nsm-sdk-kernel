@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Doc.ai and/or its affiliates.
+// Copyright (c) 2023 Nordix and/or its affiliates.
 //
 // SPDX-License-Identifier: Apache-2.0
 //
@@ -16,15 +16,16 @@
 
 package iprule
 
-import (
-	"sync"
+// netnsRTableNextID stores Network namespace and Next Routing Table ID
+type netnsRTableNextID struct {
+	ns    string
+	nrtid int
+}
 
-	"github.com/networkservicemesh/api/pkg/api/networkservice"
-)
-
-//go:generate go-syncmap -output table_map.gen.go -type Map<string,policies>
-
-type policies map[int]*networkservice.PolicyRoute
-
-// Map - sync.Map with key == string (connID) and value == policies
-type Map sync.Map
+// createNetnsRTableNextID returns netnsRTableNextID entry
+func createNetnsRTableNextID(ns string, nrtid int) netnsRTableNextID {
+	return netnsRTableNextID{
+		ns:    ns,
+		nrtid: nrtid,
+	}
+}
